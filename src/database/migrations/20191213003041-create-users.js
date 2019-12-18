@@ -1,50 +1,55 @@
 'use strict'
 
 module.exports = {
-  up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('users', {
-      id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER
-      },
+    up: (queryInterface, Sequelize) => {
+        return queryInterface.createTable('users', {
+            id: {
+                allowNull: false,
+                autoIncrement: true,
+                primaryKey: true,
+                type: Sequelize.INTEGER
+            },
 
-      name: {
-        allowNull: false,
-        type: Sequelize.STRING
-      },
+            name: {
+                allowNull: false,
+                type: Sequelize.STRING
+            },
 
-      email: {
-        allowNull: false,
-        unique: true,
-        type: Sequelize.STRING
-      },
+            email: {
+                allowNull: false,
+                unique: true,
+                type: Sequelize.STRING
+            },
 
-      avatar: {
-        allowNull: false,
-        type: Sequelize.STRING
-      },
+            avatar: {
+                allowNull: false,
+                type: Sequelize.STRING
+            },
 
-      provider: {
-        allowNull: false,
-        defaultValue: false,
-        type: Sequelize.BOOLEAN
-      },
+            password_hash: {
+                allowNull: false,
+                type: Sequelize.STRING,
+            },
 
-      create_at: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
+            provider: {
+                allowNull: false,
+                defaultValue: false,
+                type: Sequelize.BOOLEAN
+            },
 
-      updated_at: {
-        allowNull: false,
-        type: Sequelize.DATE
-      }
-    })
-  },
+            created_at: {
+                allowNull: false,
+                type: Sequelize.DATE
+            },
 
-  down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('users')
-  }
+            updated_at: {
+                allowNull: false,
+                type: Sequelize.DATE
+            }
+        })
+    },
+
+    down: (queryInterface, Sequelize) => {
+        return queryInterface.dropTable('users')
+    }
 }
