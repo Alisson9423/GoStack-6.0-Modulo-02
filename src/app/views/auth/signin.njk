@@ -1,0 +1,16 @@
+{% extends "layouts/auth.njk"%}
+
+{% block body %}
+	<form action="/signin" method="post">
+		<img src="/images/logo.svg" alt="" height="42" />
+
+		<input type="email" name="email" placeholder="Seu E-mail">
+		<input type="password" name="password" placeholder="Senha secreta">
+
+
+		<button type="submit">Logar</button>
+
+		<a href="/signup">Criar Conta Grátis</a>
+	</form>
+
+{%endblock%}
