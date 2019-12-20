@@ -3,6 +3,8 @@
 {% block body %}
 	<form action="/signin" method="post">
 		<img src="/images/logo.svg" alt="" height="42" />
+		
+		{% include "partials/flash.njk" %}
 
 		<input type="email" name="email" placeholder="Seu E-mail">
 		<input type="password" name="password" placeholder="Senha secreta">

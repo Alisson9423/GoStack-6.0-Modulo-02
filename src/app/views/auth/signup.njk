@@ -2,6 +2,8 @@
 
 {% block body %}
 	<form action="" method="post" enctype="multipart/form-data">
+		{% include "partials/flash.njk" %}
+
 		<label for="avatar">
 			<img src="/images/avatar.svg" height="24" alt="">
 		</label>
