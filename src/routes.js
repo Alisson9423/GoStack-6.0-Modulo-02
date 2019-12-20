@@ -17,6 +17,7 @@ routes.post('/signup', upload.single('avatar'), UserControler.store)
 
 routes.use('/app', authMilldeware)
 
+routes.get('/app/logout', SessionController.destroy)
 routes.get('/app/dashboard', (req, res) => {
     console.log(req.session.user)
     res.render('dashboard')
