@@ -7,6 +7,7 @@ const authMilldeware = require('./app/middleware/auth')
 const guestMilldeware = require('./app/middleware/guest')
 
 const UserControler = require('./app/controllers/UserController')
+const DashboardControler = require('./app/controllers/DashboardController')
 const SessionController = require('./app/controllers/SessionController')
 
 routes.use((req, res, next) => {
@@ -26,9 +27,6 @@ routes.post('/signup', upload.single('avatar'), UserControler.store)
 routes.use('/app', authMilldeware)
 
 routes.get('/app/logout', SessionController.destroy)
-routes.get('/app/dashboard', (req, res) => {
-    console.log(req.session.user)
-    res.render('dashboard')
-})
+routes.get('/app/dashboard', DashboardControler.index)
 
 module.exports = routes
