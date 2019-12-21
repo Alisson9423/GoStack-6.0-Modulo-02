@@ -9,14 +9,17 @@ const guestMilldeware = require('./app/middleware/guest')
 const UserControler = require('./app/controllers/UserController')
 const DashboardControler = require('./app/controllers/DashboardController')
 const SessionController = require('./app/controllers/SessionController')
+const FileController = require('./app/controllers/FileController')
+const AppontmentController = require('./app/controllers/AppontmentController')
+const AvailableController = require('./app/controllers/AvailableController')
 
 routes.use((req, res, next) => {
     res.locals.flashSucces = req.flash('success')
     res.locals.flashError = req.flash('error')
-        // console.log(req.flash('success'))
-        // console.log(res.locals.flashSucces)
     next()
 })
+
+routes.get('/files/:file', FileController.show)
 
 routes.get('/', guestMilldeware, SessionController.create)
 routes.post('/signin', SessionController.store)
@@ -28,5 +31,7 @@ routes.use('/app', authMilldeware)
 
 routes.get('/app/logout', SessionController.destroy)
 routes.get('/app/dashboard', DashboardControler.index)
+routes.get('/app/appointments/new/:provider', AppontmentController.create)
+routes.get('/app/available/:provider/', AvailableController.index)
 
 module.exports = routes
